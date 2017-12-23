@@ -12,6 +12,19 @@
 
 #include <ft_printf.h>
 
+static void		ft_pf_res_d_i_precision_while(char **res, char **s, \
+				int *i, int *j)
+{
+	while (*i >= 0 && (*s)[*j] != '-' && *j >= 0)
+	{
+		(*res)[*i] = (*s)[*j];
+		*i = *i - 1;
+		*j = *j - 1;
+		if (*j < 0)
+			break ;
+	}
+}
+
 char	*ft_pf_res_d_i_precision(char *s, t_format *all)
 {
 	char	*res;
@@ -30,8 +43,8 @@ char	*ft_pf_res_d_i_precision(char *s, t_format *all)
 	num_of_zeroes = (*all).precision_field - len;
 	i = ft_strlen(s) + num_of_zeroes;
 	res = ft_strnew(i);
-	while (--i >= 0 && s[j] != '-' && j >= 0)
-		res[i] = s[j--];
+	i--;
+	ft_pf_res_d_i_precision_while(&res, &s, &i, &j);
 	while (num_of_zeroes--)
 		res[i--] = '0';
 	if (*s == '-')

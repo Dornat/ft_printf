@@ -66,15 +66,11 @@ static void		ft_pf_pruc_mask3(unsigned int b)
 
 void			ft_pf_print_unicode(unsigned int b)
 {
-	unsigned char	res_char;
 	int				len_bits;
 
 	len_bits = ft_bit_size(b);
 	if (len_bits <= 7)
-	{
-		res_char = b;
 		write(1, &b, 1);
-	}
 	else if (len_bits <= 11)
 		ft_pf_pruc_mask1(b);
 	else if (len_bits <= 16)

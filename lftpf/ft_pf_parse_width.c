@@ -34,10 +34,11 @@ static void		ft_pf_parse_width_elif(const char **format, t_format *all, \
 void			ft_pf_parse_width(const char **format, t_format *all, \
 				va_list ap)
 {
-	char	res[9];
+	char	*res;
 	int		i;
 
 	i = 0;
+	res = ft_strnew(9);
 	if (!(*all).parameter_field && **format == '*')
 	{
 		(*all).width_field = va_arg(ap, int);
@@ -57,4 +58,5 @@ void			ft_pf_parse_width(const char **format, t_format *all, \
 		}
 		(*all).width_field = ft_atoi(res);
 	}
+	ft_strdel(&res);
 }

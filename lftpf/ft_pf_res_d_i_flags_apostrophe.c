@@ -34,7 +34,7 @@ static char		*ft_pf_put_commas(char *dst, char *src, t_format *all, \
 		len_of_src--;
 		count++;
 	}
-	while (len_of_src >= 0)
+	while (len_of_src >= 0 && len_of_dst >= 0)
 		dst[len_of_dst--] = src[len_of_src--];
 	return (dst);
 }
