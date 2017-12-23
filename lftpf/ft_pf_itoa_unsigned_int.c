@@ -1,30 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrev.c                                        :+:      :+:    :+:   */
+/*   ft_pf_itoa_unsigned_int.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpolosuk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/11 18:41:30 by dpolosuk          #+#    #+#             */
-/*   Updated: 2017/12/23 11:33:57 by dpolosuk         ###   ########.fr       */
+/*   Created: 2017/12/19 12:53:34 by dpolosuk          #+#    #+#             */
+/*   Updated: 2017/12/23 11:35:19 by dpolosuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include <ft_printf.h>
 
-void	ft_strrev(char *s)
+char			*ft_pf_itoa_unsigned_int(unsigned int ui)
 {
-	char	*p1;
-	char	*p2;
+	unsigned int		tmpn;
+	unsigned int		len;
+	char				*str;
 
-	p1 = s;
-	p2 = s + ft_strlen(s) - 1;
-	while (p2 > p1)
+	tmpn = ui;
+	len = 2;
+	while (tmpn /= 10)
+		len++;
+	if ((str = (char*)malloc(sizeof(char) * len)) == NULL)
+		return (NULL);
+	str[--len] = '\0';
+	while (len--)
 	{
-		*p1 ^= *p2;
-		*p2 ^= *p1;
-		*p1 ^= *p2;
-		p1++;
-		p2--;
+		str[len] = ui % 10 + '0';
+		ui = ui / 10;
 	}
+	return (str);
 }

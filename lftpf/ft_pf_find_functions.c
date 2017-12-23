@@ -1,30 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrev.c                                        :+:      :+:    :+:   */
+/*   ft_pf_find_functions.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpolosuk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/11 18:41:30 by dpolosuk          #+#    #+#             */
-/*   Updated: 2017/12/23 11:33:57 by dpolosuk         ###   ########.fr       */
+/*   Created: 2017/12/22 17:35:05 by dpolosuk          #+#    #+#             */
+/*   Updated: 2017/12/22 17:35:30 by dpolosuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include <ft_printf.h>
 
-void	ft_strrev(char *s)
+int		ft_pf_find_minus(char *s)
 {
-	char	*p1;
-	char	*p2;
+	int		i;
 
-	p1 = s;
-	p2 = s + ft_strlen(s) - 1;
-	while (p2 > p1)
+	i = 0;
+	while (s[i])
 	{
-		*p1 ^= *p2;
-		*p2 ^= *p1;
-		*p1 ^= *p2;
-		p1++;
-		p2--;
+		if (s[i] == '-')
+			return (1);
+		i++;
 	}
+	return (0);
+}
+
+int		ft_pf_find_digit_index(char *s)
+{
+	int		i;
+
+	i = 0;
+	while (s[i])
+	{
+		if (ft_isdigit(s[i]))
+			return (i);
+		i++;
+	}
+	return (0);
 }

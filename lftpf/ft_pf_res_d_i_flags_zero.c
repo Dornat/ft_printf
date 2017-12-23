@@ -1,30 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrev.c                                        :+:      :+:    :+:   */
+/*   ft_pf_res_d_i_flags_zero.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpolosuk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/11 18:41:30 by dpolosuk          #+#    #+#             */
-/*   Updated: 2017/12/23 11:33:57 by dpolosuk         ###   ########.fr       */
+/*   Created: 2017/12/22 17:36:09 by dpolosuk          #+#    #+#             */
+/*   Updated: 2017/12/22 17:36:17 by dpolosuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include <ft_printf.h>
 
-void	ft_strrev(char *s)
+char	*ft_pf_res_d_i_flags_zero(char *s, t_format *all)
 {
-	char	*p1;
-	char	*p2;
+	int		minus;
+	int		i;
+	int		digit_index;
 
-	p1 = s;
-	p2 = s + ft_strlen(s) - 1;
-	while (p2 > p1)
+	if ((*all).precision_field_identifier || (*all).flag_minus)
+		return (s);
+	i = 0;
+	minus = 0;
+	digit_index = ft_pf_find_digit_index(s);
+	if (ft_pf_find_minus(s))
+		minus = 1;
+	while (i < digit_index)
 	{
-		*p1 ^= *p2;
-		*p2 ^= *p1;
-		*p1 ^= *p2;
-		p1++;
-		p2--;
+		s[i] = '0';
+		i++;
 	}
+	if (minus)
+		s[0] = '-';
+	return (s);
 }

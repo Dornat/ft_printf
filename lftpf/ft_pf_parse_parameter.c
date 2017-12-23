@@ -1,30 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrev.c                                        :+:      :+:    :+:   */
+/*   ft_pf_parse_parameter.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpolosuk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/11 18:41:30 by dpolosuk          #+#    #+#             */
-/*   Updated: 2017/12/23 11:33:57 by dpolosuk         ###   ########.fr       */
+/*   Created: 2017/12/22 17:07:32 by dpolosuk          #+#    #+#             */
+/*   Updated: 2017/12/22 17:12:31 by dpolosuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include <ft_printf.h>
 
-void	ft_strrev(char *s)
+int		ft_pf_parse_parameter(const char **format)
 {
-	char	*p1;
-	char	*p2;
+	char	params[3];
+	int		i;
 
-	p1 = s;
-	p2 = s + ft_strlen(s) - 1;
-	while (p2 > p1)
+	i = 0;
+	while ((*format)[i] != '$')
 	{
-		*p1 ^= *p2;
-		*p2 ^= *p1;
-		*p1 ^= *p2;
-		p1++;
-		p2--;
+		if (ft_pf_check_for_type((*format)[i]) || (*format)[i] == '.' || \
+			ft_pf_check_for_flag((*format)[i]) || \
+			ft_pf_check_for_t_size((*format)[i]))
+			return (0);
+		params[i] = (*format)[i];
+		i++;
 	}
+	params[i] = '\0';
+	*format = *format + i + 1;
+	return (ft_atoi(params));
 }

@@ -6,7 +6,7 @@
 #    By: dpolosuk <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/09 13:27:26 by dpolosuk          #+#    #+#              #
-#    Updated: 2017/12/13 13:18:46 by dpolosuk         ###   ########.fr        #
+#    Updated: 2017/12/22 18:06:03 by dpolosuk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -83,8 +83,29 @@ SRC_LIB =	ft_atoi.c \
 			ft_toupper.c \
 			get_next_line.c \
 
-SRC =		ft_printf.c \
-			ft_pf_print_unicode.c \
+SRC =	ft_pf_check_functions.c \
+		ft_pf_deal_with_d_i.c \
+		ft_pf_find_functions.c \
+		ft_pf_functions_for_res_d_i.c \
+		ft_pf_itoa_long_long.c \
+		ft_pf_itoa_unsigned_int.c \
+		ft_pf_itoa_unsigned_long_long.c \
+		ft_pf_parse_flags.c \
+		ft_pf_parse_parameter.c \
+		ft_pf_parse_precision.c \
+		ft_pf_parse_size.c \
+		ft_pf_parse_width.c \
+		ft_pf_print_unicode.c \
+		ft_pf_res_d_i_flags.c \
+		ft_pf_res_d_i_flags_apostrophe.c \
+		ft_pf_res_d_i_flags_minus.c \
+		ft_pf_res_d_i_flags_plus.c \
+		ft_pf_res_d_i_flags_space.c \
+		ft_pf_res_d_i_flags_zero.c \
+		ft_pf_res_d_i_precision.c \
+		ft_pf_res_d_i_raw.c \
+		ft_pf_res_d_i_width.c \
+		ft_printf.c \
 
 OBJ_PATH = ./lftpf/
 OBJ_LIB_PATH = ./lft2.0/

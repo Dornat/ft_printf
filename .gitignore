@@ -1,2 +1,5 @@
 *.o
 *.swp
+*.sh
+tags
+.DS_Store
