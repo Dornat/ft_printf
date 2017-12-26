@@ -6,7 +6,7 @@
 /*   By: dpolosuk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/22 18:03:40 by dpolosuk          #+#    #+#             */
-/*   Updated: 2017/12/22 18:03:46 by dpolosuk         ###   ########.fr       */
+/*   Updated: 2017/12/26 12:40:27 by dpolosuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ char	*ft_pf_res_d_i_width(char *s, t_format *all)
 	res = NULL;
 	i = 0;
 	j = 0;
+	if (!(*all).precision_field_identifier)
+		(*all).len_of_raw_s = ft_strlen(s);
 	if ((*all).width_field <= (int)ft_strlen(s) || \
 			(*all).width_field <= (*all).precision_field)
 		return (s);

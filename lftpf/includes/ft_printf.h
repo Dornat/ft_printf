@@ -6,7 +6,7 @@
 /*   By: dpolosuk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/09 13:40:35 by dpolosuk          #+#    #+#             */
-/*   Updated: 2017/12/22 17:03:53 by dpolosuk         ###   ########.fr       */
+/*   Updated: 2017/12/26 16:12:44 by dpolosuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct		s_format
 		hh = 1, h, l, ll, L, z, j,
 	}				t_size;
 	int				len_of_raw_s;
+	unsigned int	big_x:1;
 }					t_format;
 
 /*
@@ -45,6 +46,12 @@ void				ft_pf_the_center(const char **format, t_format *all, \
 void				ft_pf_put_everything_together(const char **format, \
 					t_format *all, va_list ap, unsigned int *len);
 void				ft_pf_deal_with_d_i(t_format *all, va_list ap, \
+					unsigned int *len);
+void				ft_pf_deal_with_u(t_format *all, va_list ap, \
+					unsigned int *len);
+void				ft_pf_deal_with_o(t_format *all, va_list ap, \
+					unsigned int *len);
+void				ft_pf_deal_with_x(t_format *all, va_list ap, \
 					unsigned int *len);
 
 /*
@@ -60,7 +67,7 @@ void				ft_pf_parse_precision(const char **format, t_format *all, \
 void				ft_pf_parse_size(const char **format, t_format *all);
 
 /*
-** >d and i types dealing
+** >d, i and D types dealing
 */
 
 char				*ft_pf_res_d_i_raw(t_format *all, va_list ap);
@@ -72,7 +79,7 @@ char				*ft_pf_res_d_i_precision(char *s, t_format *all);
 char				*ft_pf_res_d_i_width(char *s, t_format *all);
 
 /*
-** >>d and i types flags dealing
+** >>d, i and D types flags dealing
 */
 
 char				*ft_pf_res_d_i_flags(char *s, t_format *all);
@@ -83,6 +90,49 @@ char				*ft_pf_res_d_i_flags_space(char *s, t_format *all);
 char				*ft_pf_res_d_i_flags_minus(char *s, t_format *all);
 
 /*
+** >u and U types dealing
+*/
+
+char				*ft_pf_res_u_raw(t_format *all, va_list ap);
+unsigned int		ft_pf_normal_u(t_format *all, va_list ap);
+unsigned char		ft_pf_short_short_u(t_format *all, va_list ap);
+unsigned short		ft_pf_short_u(t_format *all, va_list ap);
+unsigned long long	ft_pf_long_long_u(t_format *all, va_list ap);
+
+/*
+** >>u and U types flags dealing
+*/
+
+char				*ft_pf_res_u_flags(char *s, t_format *all);
+
+/*
+** >o and O types dealing
+*/
+
+char				*ft_pf_res_o_raw(t_format *all, va_list ap);
+
+/*
+** >>o and O types flags dealing
+*/
+
+char				*ft_pf_res_o_flags(char *s, t_format *all);
+char				*ft_pf_res_o_flags_hash(char *s, t_format *all);
+
+/*
+** >x and X types dealing
+*/
+
+char				*ft_pf_res_x_raw(t_format *a, va_list ap);
+
+/*
+** >>x and X types flags dealing
+*/
+
+char				*ft_pf_res_x_flags(char *s, t_format *all);
+char				*ft_pf_res_x_flags_zero(char *s, t_format *all);
+char				*ft_pf_res_x_flags_hash(char *s, t_format *all);
+
+/*
 ** Other functions
 */
 
@@ -91,10 +141,18 @@ void				ft_pf_set_zeros_to_struct_fields(t_format *all);
 char				*ft_pf_itoa_long_long(long long int ll);
 char				*ft_pf_itoa_unsigned_int(unsigned int ui);
 char				*ft_pf_itoa_unsigned_long_long(unsigned long long int ui);
+int					ft_pf_check_for_big_sdouxc(char c);
 int					ft_pf_check_for_type(char c);
 int					ft_pf_check_for_t_size(char c);
 int					ft_pf_check_for_flag(char c);
 int					ft_pf_find_minus(char *s);
 int					ft_pf_find_digit_index(char *s);
+int					ft_pf_find_hex_index(char *s);
+char				*ft_pf_dec_to_oct_ui(unsigned int dec);
+char				*ft_pf_dec_to_oct_us(unsigned short dec);
+char				*ft_pf_dec_to_oct_uss(unsigned char dec);
+char				*ft_pf_dec_to_oct_ull(unsigned long long dec);
+char				*ft_pf_dec_to_hex(unsigned long long int input);
+int					ft_count_bits(unsigned long long dec);
 
 #endif

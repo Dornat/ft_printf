@@ -1,34 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pf_parse_parameter.c                            :+:      :+:    :+:   */
+/*   ft_pf_dec_to_hex_functions.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpolosuk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/22 17:07:32 by dpolosuk          #+#    #+#             */
-/*   Updated: 2017/12/25 15:16:33 by dpolosuk         ###   ########.fr       */
+/*   Created: 2017/12/26 10:35:45 by dpolosuk          #+#    #+#             */
+/*   Updated: 2017/12/26 16:13:08 by dpolosuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_printf.h>
 
-int		ft_pf_parse_parameter(const char **format)
+char	*ft_pf_dec_to_hex(unsigned long long int input)
 {
-	char	params[3];
+	char	*output;
+	char	hex[16];
 	int		i;
+	int		bits_num;
+	int		res_len;
 
 	i = 0;
-	while ((*format)[i] != '$')
+	bits_num = ft_count_bits(input);
+	res_len = (bits_num % 4 == 0) ? (bits_num / 4) : ((bits_num / 4) + 1);
+	output = ft_strnew(res_len);
+	ft_strcpy(hex, "0123456789abcdef");
+	while (i < res_len)
 	{
-		if (ft_pf_check_for_type((*format)[i]) || (*format)[i] == '.' || \
-			ft_pf_check_for_flag((*format)[i]) || \
-			ft_pf_check_for_t_size((*format)[i]) || \
-			ft_pf_check_for_big_sdouxc((*format)[i]))
-			return (0);
-		params[i] = (*format)[i];
-		i++;
+		output[i++] = hex[(input % 16)];
+		input >>= 4;
 	}
-	params[i] = '\0';
-	*format = *format + i + 1;
-	return (ft_atoi(params));
+	ft_strrev(output);
+	return (output);
 }

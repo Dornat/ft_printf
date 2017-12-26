@@ -1,34 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pf_parse_parameter.c                            :+:      :+:    :+:   */
+/*   ft_pf_res_x_flags_zero.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpolosuk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/22 17:07:32 by dpolosuk          #+#    #+#             */
-/*   Updated: 2017/12/25 15:16:33 by dpolosuk         ###   ########.fr       */
+/*   Created: 2017/12/26 11:23:34 by dpolosuk          #+#    #+#             */
+/*   Updated: 2017/12/26 11:29:38 by dpolosuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_printf.h>
 
-int		ft_pf_parse_parameter(const char **format)
+char	*ft_pf_res_x_flags_zero(char *s, t_format *all)
 {
-	char	params[3];
 	int		i;
+	int		digit_index;
 
+	if ((*all).precision_field_identifier || (*all).flag_minus)
+		return (s);
 	i = 0;
-	while ((*format)[i] != '$')
+	digit_index = ft_pf_find_hex_index(s);
+	while (i < digit_index)
 	{
-		if (ft_pf_check_for_type((*format)[i]) || (*format)[i] == '.' || \
-			ft_pf_check_for_flag((*format)[i]) || \
-			ft_pf_check_for_t_size((*format)[i]) || \
-			ft_pf_check_for_big_sdouxc((*format)[i]))
-			return (0);
-		params[i] = (*format)[i];
+		s[i] = '0';
 		i++;
 	}
-	params[i] = '\0';
-	*format = *format + i + 1;
-	return (ft_atoi(params));
+	return (s);
 }

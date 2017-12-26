@@ -6,12 +6,11 @@
 /*   By: dpolosuk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/09 13:42:09 by dpolosuk          #+#    #+#             */
-/*   Updated: 2017/12/22 18:16:15 by dpolosuk         ###   ########.fr       */
+/*   Updated: 2017/12/26 10:27:36 by dpolosuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_printf.h>
-#include <libft.h>
 
 void	ft_pf_set_zeros_to_struct_fields(t_format *all)
 {
@@ -27,13 +26,24 @@ void	ft_pf_set_zeros_to_struct_fields(t_format *all)
 	(*all).precision_field = 0;
 	(*all).t_size = 0;
 	(*all).len_of_raw_s = 0;
+	(*all).big_x = 0;
 }
 
 void	ft_pf_put_everything_together(const char **format, t_format *all, \
 		va_list ap, unsigned int *len)
 {
-	if (**format == 'd' || **format == 'i')
+	if (**format == 'd' || **format == 'i' || **format == 'D')
 		ft_pf_deal_with_d_i(all, ap, len);
+	if (**format == 'u' || **format == 'U')
+		ft_pf_deal_with_u(all, ap, len);
+	if (**format == 'o' || **format == 'O')
+		ft_pf_deal_with_o(all, ap, len);
+	if (**format == 'x' || **format == 'X')
+	{
+		if (**format == 'X')
+			(*all).big_x = 1;
+		ft_pf_deal_with_x(all, ap, len);
+	}
 	*format = *format + 1;
 }
 

@@ -6,7 +6,7 @@
 /*   By: dpolosuk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/22 17:13:33 by dpolosuk          #+#    #+#             */
-/*   Updated: 2017/12/23 11:53:31 by dpolosuk         ###   ########.fr       */
+/*   Updated: 2017/12/26 19:06:10 by dpolosuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,22 +34,23 @@ static void		ft_pf_parse_width_elif(const char **format, t_format *all, \
 void			ft_pf_parse_width(const char **format, t_format *all, \
 				va_list ap)
 {
-	char	res[9];
+	char	*res;
 	int		i;
 
 	i = 0;
+	res = ft_strnew(9);
 	if (!(*all).parameter_field && **format == '*')
 	{
 		(*all).width_field = va_arg(ap, int);
 		*format = *format + 1;
 	}
 	else if ((*all).parameter_field && !ft_pf_check_for_type(**format) && \
-			!ft_pf_check_for_t_size(**format) && **format != '.')
+			!ft_pf_check_for_t_size(**format) && **format == '*')
 		ft_pf_parse_width_elif(format, all, ap, i);
 	else
 	{
-		while (!ft_pf_check_for_type(**format) && \
-				!ft_pf_check_for_t_size(**format) && **format != '.')
+		while (!ft_pf_check_for_type(**format) && **format != '.' && \
+	!ft_pf_check_for_t_size(**format) && !ft_pf_check_for_big_sdouxc(**format))
 		{
 			res[i] = **format;
 			i++;
@@ -57,4 +58,5 @@ void			ft_pf_parse_width(const char **format, t_format *all, \
 		}
 		(*all).width_field = ft_atoi(res);
 	}
+	ft_strdel(&res);
 }

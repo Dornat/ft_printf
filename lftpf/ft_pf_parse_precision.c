@@ -6,7 +6,7 @@
 /*   By: dpolosuk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/22 17:15:41 by dpolosuk          #+#    #+#             */
-/*   Updated: 2017/12/23 11:46:25 by dpolosuk         ###   ########.fr       */
+/*   Updated: 2017/12/26 19:05:31 by dpolosuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void			ft_pf_parse_precision(const char **format, t_format *all, \
 	*format = *format + 1;
 	if (!(*all).parameter_field && **format == '*')
 		ft_pf_parse_precision_if(format, all, ap);
-	else if ((*all).parameter_field)
+	else if ((*all).parameter_field && **format == '*')
 		ft_pf_parse_precision_elif(format, all, ap, i);
 	else
 	{

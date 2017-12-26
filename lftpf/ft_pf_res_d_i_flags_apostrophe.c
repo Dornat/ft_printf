@@ -6,11 +6,25 @@
 /*   By: dpolosuk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/22 17:32:48 by dpolosuk          #+#    #+#             */
-/*   Updated: 2017/12/23 11:50:43 by dpolosuk         ###   ########.fr       */
+/*   Updated: 2017/12/25 12:21:47 by dpolosuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_printf.h>
+
+static void		ft_pf_remove_zeroes(char **dst, t_format *all)
+{
+	int		len;
+	int		i;
+
+	len = ft_strlen(*dst) - (*all).precision_field;
+	i = 0;
+	while (i < len && ((*dst)[i] == '0' || (*dst)[i] == ' '))
+	{
+		(*dst)[i] = ' ';
+		i++;
+	}
+}
 
 static char		*ft_pf_put_commas(char *dst, char *src, t_format *all, \
 				int len_of_dst)
@@ -34,8 +48,11 @@ static char		*ft_pf_put_commas(char *dst, char *src, t_format *all, \
 		len_of_src--;
 		count++;
 	}
-	while (len_of_src >= 0)
+	while (len_of_src >= 0 && len_of_dst >= 0)
 		dst[len_of_dst--] = src[len_of_src--];
+	if (((int)ft_strlen(dst) - \
+				ft_pf_find_digit_index(dst) + 1) >= (*all).precision_field)
+		ft_pf_remove_zeroes(&dst, all);
 	return (dst);
 }
 

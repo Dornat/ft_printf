@@ -6,7 +6,7 @@
 #    By: dpolosuk <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/09 13:27:26 by dpolosuk          #+#    #+#              #
-#    Updated: 2017/12/22 18:06:03 by dpolosuk         ###   ########.fr        #
+#    Updated: 2017/12/26 20:01:28 by dpolosuk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -83,10 +83,19 @@ SRC_LIB =	ft_atoi.c \
 			ft_toupper.c \
 			get_next_line.c \
 
-SRC =	ft_pf_check_functions.c \
+SRC =	ft_count_bits.c \
+		ft_pf_check_functions.c \
 		ft_pf_deal_with_d_i.c \
+		ft_pf_deal_with_o.c \
+		ft_pf_deal_with_o_raw.c \
+		ft_pf_deal_with_u.c \
+		ft_pf_deal_with_x.c \
+		ft_pf_deal_with_x_raw.c \
+		ft_pf_dec_to_hex_functions.c \
+		ft_pf_dec_to_oct_functions.c \
 		ft_pf_find_functions.c \
 		ft_pf_functions_for_res_d_i.c \
+		ft_pf_functions_for_res_u.c \
 		ft_pf_itoa_long_long.c \
 		ft_pf_itoa_unsigned_int.c \
 		ft_pf_itoa_unsigned_long_long.c \
@@ -105,6 +114,13 @@ SRC =	ft_pf_check_functions.c \
 		ft_pf_res_d_i_precision.c \
 		ft_pf_res_d_i_raw.c \
 		ft_pf_res_d_i_width.c \
+		ft_pf_res_o_flags.c \
+		ft_pf_res_o_flags_hash.c \
+		ft_pf_res_u_flags.c \
+		ft_pf_res_u_raw.c \
+		ft_pf_res_x_flags.c \
+		ft_pf_res_x_flags_hash.c \
+		ft_pf_res_x_flags_zero.c \
 		ft_printf.c \
 
 OBJ_PATH = ./lftpf/
