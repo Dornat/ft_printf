@@ -25,7 +25,11 @@ static void		ft_pf_res_d_i_precision_while(char **res, char **s, \
 	}
 }
 
+<<<<<<< HEAD
 char			*ft_pf_res_d_i_precision(char *s, t_format *all)
+=======
+char	*ft_pf_res_d_i_precision(char *s, t_format *all)
+>>>>>>> 7e0a6491fec35e2cd22c9ce63bed84838975854c
 {
 	char	*res;
 	int		len;
@@ -43,7 +47,11 @@ char			*ft_pf_res_d_i_precision(char *s, t_format *all)
 	num_of_zeroes = (*all).precision_field - len;
 	i = ft_strlen(s) + num_of_zeroes;
 	res = ft_strnew(i);
+<<<<<<< HEAD
 	--i;
+=======
+	i--;
+>>>>>>> 7e0a6491fec35e2cd22c9ce63bed84838975854c
 	ft_pf_res_d_i_precision_while(&res, &s, &i, &j);
 	while (num_of_zeroes--)
 		res[i--] = '0';
