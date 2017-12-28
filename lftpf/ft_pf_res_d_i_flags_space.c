@@ -6,7 +6,7 @@
 /*   By: dpolosuk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/22 17:38:12 by dpolosuk          #+#    #+#             */
-/*   Updated: 2017/12/22 17:38:21 by dpolosuk         ###   ########.fr       */
+/*   Updated: 2017/12/28 18:53:44 by dpolosuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,13 @@ char	*ft_pf_res_d_i_flags_space(char *s, t_format *all)
 	i = ft_pf_find_digit_index(s);
 	if (ft_pf_find_minus(s) || s[i - 1] == ' ')
 		return (s);
-	if (s[i] == '0' && s[i + 1] != '\0')
+	if (s[i] == '0' && s[i + 1] != '\0' && !(*all).precision_field_identifier)
 	{
 		s[i] = ' ';
 		return (s);
 	}
-	else if (s[i] != '0' || (s[i] == '0' && s[i + 1] == '\0'))
+	else if (s[i] != '0' || (s[i] == '0' && s[i + 1] == '\0') || \
+		(s[i] == '0' && (*all).precision_field_identifier))
 	{
 		res = ft_strnew(ft_strlen(s) + 1);
 		ft_strlcat(res + 1, s, ft_strlen(s) + 1);
