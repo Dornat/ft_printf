@@ -1,32 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_pf_res_p_flags.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpolosuk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/05 16:18:12 by dpolosuk          #+#    #+#             */
-/*   Updated: 2017/12/09 12:25:43 by dpolosuk         ###   ########.fr       */
+/*   Created: 2017/12/27 10:25:06 by dpolosuk          #+#    #+#             */
+/*   Updated: 2017/12/27 10:56:45 by dpolosuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include <ft_printf.h>
 
-void	ft_putnbr_fd(int n, int fd)
+char	*ft_pf_res_p_flags(char *s, t_format *all)
 {
-	if (n == -2147483648)
-	{
-		ft_putstr_fd("-2147483648", fd);
-		return ;
-	}
-	if (n < -2147483648 || n > 2147483647)
-		return ;
-	if (n < 0)
-	{
-		ft_putchar_fd('-', fd);
-		n = -n;
-	}
-	if (n > 9)
-		ft_putnbr_fd(n / 10, fd);
-	ft_putchar_fd(n % 10 + '0', fd);
+	char	*res;
+
+	res = s;
+	if ((*all).flag_zero)
+		res = ft_pf_res_x_flags_zero(res, all);
+	res = ft_pf_res_p_flags_hash(res, all);
+	if ((*all).flag_minus)
+		res = ft_pf_res_d_i_flags_minus(res, all);
+	return (res);
 }

@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_pf_res_shitty_type_width.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpolosuk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/05 16:18:12 by dpolosuk          #+#    #+#             */
-/*   Updated: 2017/12/09 12:25:43 by dpolosuk         ###   ########.fr       */
+/*   Created: 2017/12/27 13:11:06 by dpolosuk          #+#    #+#             */
+/*   Updated: 2017/12/27 15:09:41 by dpolosuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include <ft_printf.h>
 
-void	ft_putnbr_fd(int n, int fd)
+char	*ft_pf_res_shitty_type_width(const char **format, t_format *all)
 {
-	if (n == -2147483648)
+	char	*res;
+
+	if (!(*all).width_field || **format == '\0')
 	{
-		ft_putstr_fd("-2147483648", fd);
-		return ;
+		res = ft_strnew(1);
+		res[0] = **format;
+		return (res);
 	}
-	if (n < -2147483648 || n > 2147483647)
-		return ;
-	if (n < 0)
-	{
-		ft_putchar_fd('-', fd);
-		n = -n;
-	}
-	if (n > 9)
-		ft_putnbr_fd(n / 10, fd);
-	ft_putchar_fd(n % 10 + '0', fd);
+	res = ft_strnew((*all).width_field);
+	res = (char*)ft_memset(res, ' ', (*all).width_field - 1);
+	res[(*all).width_field - 1] = **format;
+	return (res);
 }

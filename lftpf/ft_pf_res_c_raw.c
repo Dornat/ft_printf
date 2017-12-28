@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_pf_res_c_raw.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpolosuk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/05 16:18:12 by dpolosuk          #+#    #+#             */
-/*   Updated: 2017/12/09 12:25:43 by dpolosuk         ###   ########.fr       */
+/*   Created: 2017/12/28 16:42:47 by dpolosuk          #+#    #+#             */
+/*   Updated: 2017/12/28 18:04:04 by dpolosuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include <ft_printf.h>
 
-void	ft_putnbr_fd(int n, int fd)
+char	*ft_pf_res_c_raw(t_format *all, va_list ap)
 {
-	if (n == -2147483648)
+	char			*res;
+
+	res = NULL;
+	if ((*all).t_size != l)
 	{
-		ft_putstr_fd("-2147483648", fd);
-		return ;
+		res = ft_strnew(1);
+		res[0] = ft_pf_short_short(all, ap);
+		return (res);
 	}
-	if (n < -2147483648 || n > 2147483647)
-		return ;
-	if (n < 0)
-	{
-		ft_putchar_fd('-', fd);
-		n = -n;
-	}
-	if (n > 9)
-		ft_putnbr_fd(n / 10, fd);
-	ft_putchar_fd(n % 10 + '0', fd);
+	else
+		res = (char*)ft_pf_res_unicode(ft_pf_wchar(all, ap));
+	return (res);
 }

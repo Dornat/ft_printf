@@ -1,32 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_pf_deal_with_percent.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpolosuk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/05 16:18:12 by dpolosuk          #+#    #+#             */
-/*   Updated: 2017/12/09 12:25:43 by dpolosuk         ###   ########.fr       */
+/*   Created: 2017/12/28 14:22:40 by dpolosuk          #+#    #+#             */
+/*   Updated: 2017/12/28 14:27:55 by dpolosuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include <ft_printf.h>
 
-void	ft_putnbr_fd(int n, int fd)
+void	ft_pf_deal_with_percent(const char **format, t_format *all, \
+		va_list ap, unsigned int *len)
 {
-	if (n == -2147483648)
-	{
-		ft_putstr_fd("-2147483648", fd);
-		return ;
-	}
-	if (n < -2147483648 || n > 2147483647)
-		return ;
-	if (n < 0)
-	{
-		ft_putchar_fd('-', fd);
-		n = -n;
-	}
-	if (n > 9)
-		ft_putnbr_fd(n / 10, fd);
-	ft_putchar_fd(n % 10 + '0', fd);
+	char	*res;
+
+	ap = NULL;
+	res = NULL;
+	res = ft_pf_res_shitty_type_width(format, all);
+	res = ft_pf_res_shitty_type_flags(res, all);
+	ft_putstr(res);
+	*len = *len + ft_strlen(res);
+	ft_strdel(&res);
 }

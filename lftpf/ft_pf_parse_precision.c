@@ -6,11 +6,22 @@
 /*   By: dpolosuk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/22 17:15:41 by dpolosuk          #+#    #+#             */
-/*   Updated: 2017/12/26 19:05:31 by dpolosuk         ###   ########.fr       */
+/*   Updated: 2017/12/28 15:03:47 by dpolosuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_printf.h>
+
+#define FPCFC ft_pf_check_for_the_center(**format)
+#define FPCFB ft_pf_check_for_big_sdouxc(**format)
+#define FPCFF ft_pf_check_for_flag_except_zero(**format)
+
+static int		ft_pf_check_for_flag_except_zero(char c)
+{
+	if (c == '\'' || c == '#' || c == ' ' || c == '-' || c == '+')
+		return (1);
+	return (0);
+}
 
 static void		ft_pf_parse_precision_elif(const char **format, t_format *all, \
 				va_list ap, int i)
@@ -47,16 +58,16 @@ void			ft_pf_parse_precision(const char **format, t_format *all, \
 	i = 0;
 	if (**format != '.')
 		return ;
-	(*all).precision_field_identifier = 1;
-	*format = *format + 1;
+	while (**format == '.')
+		*format = *format + 1;
 	if (!(*all).parameter_field && **format == '*')
 		ft_pf_parse_precision_if(format, all, ap);
 	else if ((*all).parameter_field && **format == '*')
 		ft_pf_parse_precision_elif(format, all, ap, i);
 	else
 	{
-		while (!ft_pf_check_for_type(**format) && \
-				!ft_pf_check_for_t_size(**format))
+		while (!ft_pf_check_for_type(**format) && FPCFC && **format != '.' && \
+				!ft_pf_check_for_t_size(**format) && !FPCFB && !FPCFF)
 		{
 			res[i] = **format;
 			i++;
@@ -64,5 +75,6 @@ void			ft_pf_parse_precision(const char **format, t_format *all, \
 		}
 		res[i] = '\0';
 		(*all).precision_field = ft_atoi(res);
+		(*all).precision_field_identifier = 1;
 	}
 }

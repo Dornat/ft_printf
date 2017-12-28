@@ -1,32 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_pf_deal_with_p_raw.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpolosuk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/05 16:18:12 by dpolosuk          #+#    #+#             */
-/*   Updated: 2017/12/09 12:25:43 by dpolosuk         ###   ########.fr       */
+/*   Created: 2017/12/27 10:19:17 by dpolosuk          #+#    #+#             */
+/*   Updated: 2017/12/27 10:29:31 by dpolosuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include <ft_printf.h>
 
-void	ft_putnbr_fd(int n, int fd)
+char	*ft_pf_res_p_raw(t_format *all, va_list ap)
 {
-	if (n == -2147483648)
-	{
-		ft_putstr_fd("-2147483648", fd);
-		return ;
-	}
-	if (n < -2147483648 || n > 2147483647)
-		return ;
-	if (n < 0)
-	{
-		ft_putchar_fd('-', fd);
-		n = -n;
-	}
-	if (n > 9)
-		ft_putnbr_fd(n / 10, fd);
-	ft_putchar_fd(n % 10 + '0', fd);
+	char	*res;
+
+	res = NULL;
+	res = ft_pf_dec_to_hex(ft_pf_normal_p(all, ap));
+	if (*res == '0' && (*all).precision_field_identifier == 1 && \
+			(*all).precision_field == 0)
+		res[0] = '\0';
+	return (res);
 }

@@ -6,13 +6,22 @@
 /*   By: dpolosuk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/22 18:03:40 by dpolosuk          #+#    #+#             */
-/*   Updated: 2017/12/26 12:40:27 by dpolosuk         ###   ########.fr       */
+/*   Updated: 2017/12/28 12:33:28 by dpolosuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_printf.h>
 
-char	*ft_pf_res_d_i_width(char *s, t_format *all)
+static void		ft_pf_check_for_negative_width(t_format *all)
+{
+	if ((*all).width_field < 0)
+	{
+		(*all).flag_minus = 1;
+		(*all).width_field *= -1;
+	}
+}
+
+char			*ft_pf_res_d_i_width(char *s, t_format *all)
 {
 	int		num_of_spaces;
 	char	*res;
@@ -22,6 +31,7 @@ char	*ft_pf_res_d_i_width(char *s, t_format *all)
 	res = NULL;
 	i = 0;
 	j = 0;
+	ft_pf_check_for_negative_width(all);
 	if (!(*all).precision_field_identifier)
 		(*all).len_of_raw_s = ft_strlen(s);
 	if ((*all).width_field <= (int)ft_strlen(s) || \

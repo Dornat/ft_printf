@@ -6,32 +6,19 @@
 /*   By: dpolosuk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/09 13:42:09 by dpolosuk          #+#    #+#             */
-/*   Updated: 2017/12/26 10:27:36 by dpolosuk         ###   ########.fr       */
+/*   Updated: 2017/12/28 16:29:33 by dpolosuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_printf.h>
 
-void	ft_pf_set_zeros_to_struct_fields(t_format *all)
-{
-	(*all).parameter_field = 0;
-	(*all).flag_apostrophe = 0;
-	(*all).flag_minus = 0;
-	(*all).flag_plus = 0;
-	(*all).flag_space = 0;
-	(*all).flag_zero = 0;
-	(*all).flag_hash = 0;
-	(*all).precision_field_identifier = 0;
-	(*all).width_field = 0;
-	(*all).precision_field = 0;
-	(*all).t_size = 0;
-	(*all).len_of_raw_s = 0;
-	(*all).big_x = 0;
-}
-
 void	ft_pf_put_everything_together(const char **format, t_format *all, \
 		va_list ap, unsigned int *len)
 {
+	if (!ft_pf_check_for_every_type(**format))
+		ft_pf_deal_with_shitty_type(format, all, ap, len);
+	if (**format == '%')
+		ft_pf_deal_with_percent(format, all, ap, len);
 	if (**format == 'd' || **format == 'i' || **format == 'D')
 		ft_pf_deal_with_d_i(all, ap, len);
 	if (**format == 'u' || **format == 'U')
@@ -44,18 +31,44 @@ void	ft_pf_put_everything_together(const char **format, t_format *all, \
 			(*all).big_x = 1;
 		ft_pf_deal_with_x(all, ap, len);
 	}
-	*format = *format + 1;
+	if (**format == 'p')
+		ft_pf_deal_with_p(all, ap, len);
+	if (**format == 'c' || **format == 'C')
+		ft_pf_deal_with_c(all, ap, len);
+	if (**format)
+		*format = *format + 1;
+}
+
+int		ft_pf_check_for_the_center(char c)
+{
+	if ((!ft_isdigit(c) && !ft_pf_check_for_flag(c) && c != '.' && \
+		!ft_pf_check_for_t_size(c) && !ft_pf_check_for_big_sdouxc(c) && \
+		c != '*') || ft_pf_check_for_every_type(c))
+		return (0);
+	return (1);
+}
+
+int		ft_cfbt(char c)
+{
+	if (c == 'D' || c == 'U' || c == 'O' || c == 'C' || c == 'S')
+		return (1);
+	return (0);
 }
 
 void	ft_pf_the_center(const char **format, t_format *all, va_list ap, \
 		unsigned int *len)
 {
 	ft_pf_set_zeros_to_struct_fields(all);
-	(*all).parameter_field = ft_pf_parse_parameter(format);
-	ft_pf_parse_flags(format, all);
-	ft_pf_parse_width(format, all, ap);
-	ft_pf_parse_precision(format, all, ap);
-	ft_pf_parse_size(format, all);
+	while (ft_pf_check_for_the_center(**format))
+	{
+		(*all).parameter_field = ft_pf_parse_parameter(format);
+		ft_pf_parse_flags(format, all);
+		ft_pf_parse_width(format, all, ap);
+		ft_pf_parse_precision(format, all, ap);
+		ft_pf_parse_size(format, all);
+	}
+	if (ft_cfbt(**format))
+		ft_pf_parse_size(format, all);
 	ft_pf_put_everything_together(format, all, ap, len);
 }
 

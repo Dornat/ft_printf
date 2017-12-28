@@ -6,7 +6,7 @@
 /*   By: dpolosuk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/09 13:40:35 by dpolosuk          #+#    #+#             */
-/*   Updated: 2017/12/26 16:12:44 by dpolosuk         ###   ########.fr       */
+/*   Updated: 2017/12/28 18:03:53 by dpolosuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef struct		s_format
 	unsigned int	flag_hash:1;
 	unsigned int	precision_field_identifier:1;
 	int				width_field;
+	unsigned int	width_field_identifier:1;
 	int				precision_field;
 	enum			e_size
 	{
@@ -45,6 +46,10 @@ void				ft_pf_the_center(const char **format, t_format *all, \
 					va_list ap, unsigned int *len);
 void				ft_pf_put_everything_together(const char **format, \
 					t_format *all, va_list ap, unsigned int *len);
+void				ft_pf_deal_with_shitty_type(const char **format, \
+					t_format *all, va_list ap, unsigned int *len);
+void				ft_pf_deal_with_percent(const char **format, \
+					t_format *all, va_list ap, unsigned int *len);
 void				ft_pf_deal_with_d_i(t_format *all, va_list ap, \
 					unsigned int *len);
 void				ft_pf_deal_with_u(t_format *all, va_list ap, \
@@ -52,6 +57,10 @@ void				ft_pf_deal_with_u(t_format *all, va_list ap, \
 void				ft_pf_deal_with_o(t_format *all, va_list ap, \
 					unsigned int *len);
 void				ft_pf_deal_with_x(t_format *all, va_list ap, \
+					unsigned int *len);
+void				ft_pf_deal_with_p(t_format *all, va_list ap, \
+					unsigned int *len);
+void				ft_pf_deal_with_c(t_format *all, va_list ap, \
 					unsigned int *len);
 
 /*
@@ -133,16 +142,56 @@ char				*ft_pf_res_x_flags_zero(char *s, t_format *all);
 char				*ft_pf_res_x_flags_hash(char *s, t_format *all);
 
 /*
+** >p type dealing
+*/
+
+char				*ft_pf_res_p_raw(t_format *all, va_list ap);
+size_t				ft_pf_normal_p(t_format *all, va_list ap);
+
+/*
+** >>p type flags dealing
+*/
+
+char				*ft_pf_res_p_flags(char *s, t_format *all);
+char				*ft_pf_res_p_flags_hash(char *s, t_format *all);
+
+/*
+** >c type dealing
+*/
+
+char				*ft_pf_res_c_raw(t_format *all, va_list ap);
+int					ft_pf_wchar(t_format *all, va_list ap);
+
+/*
+** >shitty type dealing
+*/
+
+char				*ft_pf_res_shitty_type_width(const char **format, \
+					t_format *all);
+
+/*
+** >>shitty type flags dealing
+*/
+
+char				*ft_pf_res_shitty_type_flags(char *s, t_format *all);
+char				*ft_pf_res_shitty_type_flags_zero(char *s, \
+					t_format *all);
+char				*ft_pf_res_shitty_type_flags_minus(char *s);
+
+/*
 ** Other functions
 */
 
-void				ft_pf_print_unicode(unsigned int b);
+void				ft_pf_set_zeros_to_struct_fields(t_format *all);
+unsigned char		*ft_pf_res_unicode(unsigned int b);
 void				ft_pf_set_zeros_to_struct_fields(t_format *all);
 char				*ft_pf_itoa_long_long(long long int ll);
 char				*ft_pf_itoa_unsigned_int(unsigned int ui);
 char				*ft_pf_itoa_unsigned_long_long(unsigned long long int ui);
 int					ft_pf_check_for_big_sdouxc(char c);
 int					ft_pf_check_for_type(char c);
+int					ft_pf_check_for_every_type(char c);
+int					ft_pf_check_for_the_center(char c);
 int					ft_pf_check_for_t_size(char c);
 int					ft_pf_check_for_flag(char c);
 int					ft_pf_find_minus(char *s);
@@ -154,5 +203,6 @@ char				*ft_pf_dec_to_oct_uss(unsigned char dec);
 char				*ft_pf_dec_to_oct_ull(unsigned long long dec);
 char				*ft_pf_dec_to_hex(unsigned long long int input);
 int					ft_count_bits(unsigned long long dec);
+int					ft_pf_everything_failed(char c);
 
 #endif

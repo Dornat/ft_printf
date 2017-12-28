@@ -6,7 +6,7 @@
 /*   By: dpolosuk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/22 18:02:54 by dpolosuk          #+#    #+#             */
-/*   Updated: 2017/12/26 21:56:48 by dpolosuk         ###   ########.fr       */
+/*   Updated: 2017/12/25 12:39:55 by dpolosuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ char			*ft_pf_res_d_i_precision(char *s, t_format *all)
 	num_of_zeroes = (*all).precision_field - len;
 	i = ft_strlen(s) + num_of_zeroes;
 	res = ft_strnew(i);
-	i--;
+	--i;
 	ft_pf_res_d_i_precision_while(&res, &s, &i, &j);
 	while (num_of_zeroes--)
 		res[i--] = '0';

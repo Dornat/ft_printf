@@ -6,7 +6,7 @@
 #    By: dpolosuk <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/09 13:27:26 by dpolosuk          #+#    #+#              #
-#    Updated: 2017/12/26 20:01:28 by dpolosuk         ###   ########.fr        #
+#    Updated: 2017/12/28 18:01:49 by dpolosuk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ SRC_LIB =	ft_atoi.c \
 			ft_itoa_base.c \
 			ft_lstadd.c \
 			ft_lstdel.c \
+			ft_lstdelfunc.c \
 			ft_lstdelone.c \
 			ft_lstiter.c \
 			ft_lstmap.c \
@@ -84,9 +85,15 @@ SRC_LIB =	ft_atoi.c \
 
 SRC =	ft_count_bits.c \
 		ft_pf_check_functions.c \
+		ft_pf_deal_with_c.c \
 		ft_pf_deal_with_d_i.c \
 		ft_pf_deal_with_o.c \
 		ft_pf_deal_with_o_raw.c \
+		ft_pf_deal_with_p.c \
+		ft_pf_deal_with_p_raw.c \
+		ft_pf_deal_with_percent.c \
+		ft_pf_deal_with_shitty_type.c \
+		ft_pf_deal_with_shitty_type_flags.c \
 		ft_pf_deal_with_u.c \
 		ft_pf_deal_with_x.c \
 		ft_pf_deal_with_x_raw.c \
@@ -94,6 +101,7 @@ SRC =	ft_count_bits.c \
 		ft_pf_dec_to_oct_functions.c \
 		ft_pf_find_functions.c \
 		ft_pf_functions_for_res_d_i.c \
+		ft_pf_functions_for_res_p.c \
 		ft_pf_functions_for_res_u.c \
 		ft_pf_itoa_long_long.c \
 		ft_pf_itoa_unsigned_int.c \
@@ -104,6 +112,7 @@ SRC =	ft_count_bits.c \
 		ft_pf_parse_size.c \
 		ft_pf_parse_width.c \
 		ft_pf_print_unicode.c \
+		ft_pf_res_c_raw.c \
 		ft_pf_res_d_i_flags.c \
 		ft_pf_res_d_i_flags_apostrophe.c \
 		ft_pf_res_d_i_flags_minus.c \
@@ -115,11 +124,18 @@ SRC =	ft_count_bits.c \
 		ft_pf_res_d_i_width.c \
 		ft_pf_res_o_flags.c \
 		ft_pf_res_o_flags_hash.c \
+		ft_pf_res_p_flags.c \
+		ft_pf_res_p_flags_hash.c \
+		ft_pf_res_shitty_type_flags_minus.c \
+		ft_pf_res_shitty_type_flags_zero.c \
+		ft_pf_res_shitty_type_width.c \
 		ft_pf_res_u_flags.c \
 		ft_pf_res_u_raw.c \
 		ft_pf_res_x_flags.c \
 		ft_pf_res_x_flags_hash.c \
 		ft_pf_res_x_flags_zero.c \
+		ft_pf_set_zeroes_tp_struct_fields.c \
+		ft_pf_wchar.c \
 		ft_printf.c \
 
 OBJ_PATH = ./lftpf/
