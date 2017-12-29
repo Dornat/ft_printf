@@ -1,33 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pf_res_c_raw.c                                  :+:      :+:    :+:   */
+/*   ft_pf_res_c_flags_zero.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpolosuk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/28 16:42:47 by dpolosuk          #+#    #+#             */
-/*   Updated: 2017/12/29 15:27:12 by dpolosuk         ###   ########.fr       */
+/*   Created: 2017/12/28 19:22:25 by dpolosuk          #+#    #+#             */
+/*   Updated: 2017/12/29 16:09:59 by dpolosuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_printf.h>
 
-char	*ft_pf_res_c_raw(t_format *all, va_list ap)
+char	*ft_pf_res_c_flags_zero(char *s, int space)
 {
-	char			*res;
+	int		i;
+	int		len;
 
-	res = NULL;
-	if ((*all).t_size != l)
+	len = ft_strlen(s);
+	i = 0;
+	while (s[len] != ' ' && len > 0)
+		len--;
+	if (space)
+		len--;
+	while (i <= len)
 	{
-		res = ft_strnew(1);
-		res[0] = ft_pf_short_short(all, ap);
-		(*all).len_of_raw_s = 1;
-		return (res);
+		s[i] = '0';
+		i++;
 	}
-	else
-	{
-		res = (char*)ft_pf_res_unicode(ft_pf_wchar(all, ap));
-		(*all).len_of_raw_s = ft_strlen(res);
-	}
-	return (res);
+	return (s);
 }

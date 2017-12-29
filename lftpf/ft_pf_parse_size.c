@@ -6,7 +6,7 @@
 /*   By: dpolosuk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/22 17:16:58 by dpolosuk          #+#    #+#             */
-/*   Updated: 2017/12/28 11:56:18 by dpolosuk         ###   ########.fr       */
+/*   Updated: 2017/12/29 18:03:16 by dpolosuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,30 +50,23 @@ static void		ft_pf_parse_size_big_sdouxc(const char **format, t_format *all)
 static void		ft_pf_parse_size_ifs(const char **format, t_format *all)
 {
 	if ((*format)[0] == 'h')
-	{
 		if ((*all).t_size < 2)
 			(*all).t_size = h;
-	}
 	if ((*format)[0] == 'l')
-	{
 		if ((*all).t_size < 3)
 			(*all).t_size = l;
-	}
 	if ((*format)[0] == 'L')
-	{
 		if ((*all).t_size < 5)
 			(*all).t_size = L;
-	}
 	if ((*format)[0] == 'z')
-	{
 		if ((*all).t_size < 6)
 			(*all).t_size = z;
-	}
 	if ((*format)[0] == 'j')
-	{
 		if ((*all).t_size < 7)
 			(*all).t_size = j;
-	}
+	if ((*format)[0] == 't')
+		if ((*all).t_size < 8)
+			(*all).t_size = t;
 }
 
 void			ft_pf_parse_size(const char **format, t_format *all)

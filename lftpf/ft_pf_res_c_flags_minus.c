@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pf_res_d_i_flags_minus.c                        :+:      :+:    :+:   */
+/*   ft_pf_res_c_flags_minus.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpolosuk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/22 17:38:50 by dpolosuk          #+#    #+#             */
-/*   Updated: 2017/12/29 16:56:42 by dpolosuk         ###   ########.fr       */
+/*   Created: 2017/12/28 20:27:24 by dpolosuk          #+#    #+#             */
+/*   Updated: 2017/12/29 16:42:46 by dpolosuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_printf.h>
 
-char	*ft_pf_res_d_i_flags_minus(char *s, t_format *all)
+char	*ft_pf_res_c_flags_minus(char *s, int null, t_format *all)
 {
+	int		index;
 	int		len_raw;
-	int		index_last;
-	int		index_first;
 
-	index_last = ft_strlen(s);
-	((*all).flag_plus || (*all).flag_space || \
-	ft_pf_find_minus(s)) ? (index_first = ft_pf_find_digit_index(s) \
-	- 1) : (index_first = ft_pf_find_digit_index(s));
-	if (index_first == -1)
-		return (s);
-	len_raw = index_last - index_first;
-	s = ft_memmove(s, s + index_first, len_raw);
+	len_raw = (*all).len_of_raw_s;
+	index = ft_strlen(s) - len_raw + null;
+	s = ft_memmove(s, s + index, len_raw);
 	while (s[len_raw])
 		s[len_raw++] = ' ';
+	if (null)
+		s[len_raw] = ' ';
 	return (s);
 }

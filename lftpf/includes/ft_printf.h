@@ -6,7 +6,7 @@
 /*   By: dpolosuk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/09 13:40:35 by dpolosuk          #+#    #+#             */
-/*   Updated: 2017/12/28 18:03:53 by dpolosuk         ###   ########.fr       */
+/*   Updated: 2017/12/29 17:23:08 by dpolosuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ typedef struct		s_format
 	int				precision_field;
 	enum			e_size
 	{
-		hh = 1, h, l, ll, L, z, j,
+		hh = 1, h, l, ll, L, z, j, t
 	}				t_size;
 	int				len_of_raw_s;
 	unsigned int	big_x:1;
@@ -156,11 +156,20 @@ char				*ft_pf_res_p_flags(char *s, t_format *all);
 char				*ft_pf_res_p_flags_hash(char *s, t_format *all);
 
 /*
-** >c type dealing
+** >c and C type dealing
 */
 
 char				*ft_pf_res_c_raw(t_format *all, va_list ap);
+char				*ft_pf_res_c_width(char *s, t_format *all, int null);
 int					ft_pf_wchar(t_format *all, va_list ap);
+
+/*
+** >>c and C type flags dealing
+*/
+
+char				*ft_pf_res_c_flags(char *s, t_format *all, int null, int space);
+char				*ft_pf_res_c_flags_zero(char *s, int space);
+char				*ft_pf_res_c_flags_minus(char *s, int null, t_format *all);
 
 /*
 ** >shitty type dealing

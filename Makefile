@@ -6,7 +6,7 @@
 #    By: dpolosuk <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/09 13:27:26 by dpolosuk          #+#    #+#              #
-#    Updated: 2017/12/28 18:01:49 by dpolosuk         ###   ########.fr        #
+#    Updated: 2017/12/28 22:21:05 by dpolosuk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -111,8 +111,11 @@ SRC =	ft_count_bits.c \
 		ft_pf_parse_precision.c \
 		ft_pf_parse_size.c \
 		ft_pf_parse_width.c \
-		ft_pf_print_unicode.c \
+		ft_pf_res_c_flags.c \
+		ft_pf_res_c_flags_minus.c \
+		ft_pf_res_c_flags_zero.c \
 		ft_pf_res_c_raw.c \
+		ft_pf_res_c_width.c \
 		ft_pf_res_d_i_flags.c \
 		ft_pf_res_d_i_flags_apostrophe.c \
 		ft_pf_res_d_i_flags_minus.c \
@@ -131,6 +134,7 @@ SRC =	ft_count_bits.c \
 		ft_pf_res_shitty_type_width.c \
 		ft_pf_res_u_flags.c \
 		ft_pf_res_u_raw.c \
+		ft_pf_res_unicode.c \
 		ft_pf_res_x_flags.c \
 		ft_pf_res_x_flags_hash.c \
 		ft_pf_res_x_flags_zero.c \
