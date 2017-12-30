@@ -6,7 +6,7 @@
 /*   By: dpolosuk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/09 13:40:35 by dpolosuk          #+#    #+#             */
-/*   Updated: 2017/12/29 17:23:08 by dpolosuk         ###   ########.fr       */
+/*   Updated: 2017/12/30 17:46:00 by dpolosuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ typedef struct		s_format
 	int				precision_field;
 	enum			e_size
 	{
-		hh = 1, h, l, ll, L, z, j, t
+		hh = 1, h, L, l, ll, z, j, t
 	}				t_size;
 	int				len_of_raw_s;
 	unsigned int	big_x:1;
@@ -61,6 +61,8 @@ void				ft_pf_deal_with_x(t_format *all, va_list ap, \
 void				ft_pf_deal_with_p(t_format *all, va_list ap, \
 					unsigned int *len);
 void				ft_pf_deal_with_c(t_format *all, va_list ap, \
+					unsigned int *len);
+void				ft_pf_deal_with_s(t_format *all, va_list ap, \
 					unsigned int *len);
 
 /*
@@ -167,9 +169,29 @@ int					ft_pf_wchar(t_format *all, va_list ap);
 ** >>c and C type flags dealing
 */
 
-char				*ft_pf_res_c_flags(char *s, t_format *all, int null, int space);
+char				*ft_pf_res_c_flags(char *s, t_format *all, int null, \
+					int space);
 char				*ft_pf_res_c_flags_zero(char *s, int space);
 char				*ft_pf_res_c_flags_minus(char *s, int null, t_format *all);
+
+/*
+** >s and S type dealing
+*/
+
+char				*ft_pf_res_s_raw(t_format *all, va_list ap);
+char				*ft_pf_string(t_format *all, va_list ap);
+wchar_t				*ft_pf_string_wchar(t_format *all, va_list ap);
+char				*ft_pf_string_wchar_raw(wchar_t *ws, t_format *all);
+char				*ft_pf_res_s_precision(char *s, t_format *all);
+char				*ft_pf_res_s_width(char *s, t_format *all);
+
+/*
+** >>s and S type flags dealing
+*/
+
+char				*ft_pf_res_s_flags(char *s, t_format *all);
+char				*ft_pf_res_s_flags_minus(char *s, t_format *all);
+char				*ft_pf_res_s_flags_zero(char *s, t_format *all);
 
 /*
 ** >shitty type dealing

@@ -1,26 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_pf_res_s_raw.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpolosuk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/25 16:51:26 by dpolosuk          #+#    #+#             */
-/*   Updated: 2017/12/29 20:36:23 by dpolosuk         ###   ########.fr       */
+/*   Created: 2017/12/29 20:14:22 by dpolosuk          #+#    #+#             */
+/*   Updated: 2017/12/30 17:33:40 by dpolosuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include <ft_printf.h>
 
-char	*ft_strdup(const char *src)
+char	*ft_pf_res_s_raw(t_format *all, va_list ap)
 {
-	char	*cp;
+	char			*res;
 
-	if (src == NULL)
-		return (NULL);
-	cp = (char*)malloc(sizeof(char) * ft_strlen(src) + 1);
-	if (cp == NULL)
-		return (NULL);
-	ft_strcpy(cp, src);
-	return (cp);
+	res = NULL;
+	if ((*all).t_size != l)
+	{
+		if (!(res = ft_strdup(ft_pf_string(all, ap))))
+			return (ft_strdup("(null)\0"));
+		return (res);
+	}
+	else
+	{
+		if (!(res = ft_pf_string_wchar_raw(ft_pf_string_wchar(all, ap), all)))
+		{
+			(*all).t_size = 0;
+			return (ft_strdup("(null)\0"));
+		}
+	}
+	return (res);
 }

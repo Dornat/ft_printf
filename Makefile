@@ -6,7 +6,7 @@
 #    By: dpolosuk <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/09 13:27:26 by dpolosuk          #+#    #+#              #
-#    Updated: 2017/12/28 22:21:05 by dpolosuk         ###   ########.fr        #
+#    Updated: 2017/12/30 17:46:25 by dpolosuk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -92,6 +92,7 @@ SRC =	ft_count_bits.c \
 		ft_pf_deal_with_p.c \
 		ft_pf_deal_with_p_raw.c \
 		ft_pf_deal_with_percent.c \
+		ft_pf_deal_with_s.c \
 		ft_pf_deal_with_shitty_type.c \
 		ft_pf_deal_with_shitty_type_flags.c \
 		ft_pf_deal_with_u.c \
@@ -129,6 +130,12 @@ SRC =	ft_count_bits.c \
 		ft_pf_res_o_flags_hash.c \
 		ft_pf_res_p_flags.c \
 		ft_pf_res_p_flags_hash.c \
+		ft_pf_res_s_flags.c \
+		ft_pf_res_s_flags_minus.c \
+		ft_pf_res_s_flags_zero.c \
+		ft_pf_res_s_precision.c \
+		ft_pf_res_s_raw.c \
+		ft_pf_res_s_width.c \
 		ft_pf_res_shitty_type_flags_minus.c \
 		ft_pf_res_shitty_type_flags_zero.c \
 		ft_pf_res_shitty_type_width.c \
@@ -139,6 +146,8 @@ SRC =	ft_count_bits.c \
 		ft_pf_res_x_flags_hash.c \
 		ft_pf_res_x_flags_zero.c \
 		ft_pf_set_zeroes_tp_struct_fields.c \
+		ft_pf_string.c \
+		ft_pf_string_wchar_raw.c \
 		ft_pf_wchar.c \
 		ft_printf.c \
 

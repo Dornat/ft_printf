@@ -6,7 +6,7 @@
 /*   By: dpolosuk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/22 18:01:24 by dpolosuk          #+#    #+#             */
-/*   Updated: 2017/12/29 18:01:58 by dpolosuk         ###   ########.fr       */
+/*   Updated: 2017/12/29 18:44:22 by dpolosuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*ft_pf_res_d_i_raw(t_format *all, va_list ap)
 		res = ft_itoa(ft_pf_normal_d_i(all, ap));
 	if ((*all).t_size == hh)
 		res = ft_itoa(ft_pf_short_short(all, ap));
-	if ((*all).t_size == h)
+	if ((*all).t_size == h || (*all).t_size == L)
 		res = ft_itoa(ft_pf_short(all, ap));
 	if ((*all).t_size == l || (*all).t_size == ll || (*all).t_size == z || \
 			(*all).t_size == j || (*all).t_size == t)

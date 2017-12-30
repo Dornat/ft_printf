@@ -6,7 +6,7 @@
 /*   By: dpolosuk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/22 17:16:58 by dpolosuk          #+#    #+#             */
-/*   Updated: 2017/12/29 18:03:16 by dpolosuk         ###   ########.fr       */
+/*   Updated: 2017/12/29 18:54:10 by dpolosuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,14 @@ static void		ft_pf_parse_size_hh(const char **format, t_format *all)
 {
 	if ((*format)[1] == 'U' || (*format)[1] == 'D')
 	{
-		if ((*all).t_size < 3)
+		if ((*all).t_size < 4)
 			(*all).t_size = l;
 		*format = *format + 1;
 		return ;
 	}
 	if ((*format)[2] == 'U' || (*format)[2] == 'D')
 	{
-		if ((*all).t_size < 3)
+		if ((*all).t_size < 4)
 			(*all).t_size = l;
 		*format = *format + 2;
 		return ;
@@ -35,14 +35,14 @@ static void		ft_pf_parse_size_hh(const char **format, t_format *all)
 
 static void		ft_pf_parse_size_ll(const char **format, t_format *all)
 {
-	if ((*all).t_size < 4)
+	if ((*all).t_size < 5)
 		(*all).t_size = ll;
 	*format = *format + 2;
 }
 
 static void		ft_pf_parse_size_big_sdouxc(const char **format, t_format *all)
 {
-	if ((*all).t_size < 3)
+	if ((*all).t_size < 4)
 		(*all).t_size = l;
 	*format = *format - 1;
 }
@@ -53,10 +53,10 @@ static void		ft_pf_parse_size_ifs(const char **format, t_format *all)
 		if ((*all).t_size < 2)
 			(*all).t_size = h;
 	if ((*format)[0] == 'l')
-		if ((*all).t_size < 3)
+		if ((*all).t_size < 4)
 			(*all).t_size = l;
 	if ((*format)[0] == 'L')
-		if ((*all).t_size < 5)
+		if ((*all).t_size < 3)
 			(*all).t_size = L;
 	if ((*format)[0] == 'z')
 		if ((*all).t_size < 6)

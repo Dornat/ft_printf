@@ -6,7 +6,7 @@
 /*   By: dpolosuk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/09 13:42:09 by dpolosuk          #+#    #+#             */
-/*   Updated: 2017/12/28 16:29:33 by dpolosuk         ###   ########.fr       */
+/*   Updated: 2017/12/30 17:30:58 by dpolosuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ void	ft_pf_put_everything_together(const char **format, t_format *all, \
 		ft_pf_deal_with_p(all, ap, len);
 	if (**format == 'c' || **format == 'C')
 		ft_pf_deal_with_c(all, ap, len);
+	if (**format == 's' || **format == 'S')
+		ft_pf_deal_with_s(all, ap, len);
 	if (**format)
 		*format = *format + 1;
 }

@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_pf_res_s_precision.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpolosuk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/25 16:51:26 by dpolosuk          #+#    #+#             */
-/*   Updated: 2017/12/29 20:36:23 by dpolosuk         ###   ########.fr       */
+/*   Created: 2017/12/30 12:46:31 by dpolosuk          #+#    #+#             */
+/*   Updated: 2017/12/30 13:23:37 by dpolosuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include <ft_printf.h>
 
-char	*ft_strdup(const char *src)
+char	*ft_pf_res_s_precision(char *s, t_format *all)
 {
-	char	*cp;
+	char	*res;
 
-	if (src == NULL)
-		return (NULL);
-	cp = (char*)malloc(sizeof(char) * ft_strlen(src) + 1);
-	if (cp == NULL)
-		return (NULL);
-	ft_strcpy(cp, src);
-	return (cp);
+	res = ft_strnew((*all).precision_field);
+	res = ft_strncpy(res, s, (*all).precision_field);
+	(*all).len_of_raw_s = ft_strlen(res);
+	ft_strdel(&s);
+	return (res);
 }

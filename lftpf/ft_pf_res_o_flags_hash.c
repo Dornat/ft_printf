@@ -6,7 +6,7 @@
 /*   By: dpolosuk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/25 18:56:04 by dpolosuk          #+#    #+#             */
-/*   Updated: 2017/12/28 14:09:41 by dpolosuk         ###   ########.fr       */
+/*   Updated: 2017/12/29 19:33:57 by dpolosuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ char			*ft_pf_res_o_flags_hash(char *s, t_format *all)
 
 	res = NULL;
 	i = ft_pf_find_digit_index(s);
-	if (ft_pf_find_minus(s))
+	if (ft_pf_find_minus(s) || (((*all).precision_field - (*all).len_of_raw_s) \
+				>= 1))
 		return (s);
 	if (i > 0)
 	{
