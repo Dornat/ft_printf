@@ -6,7 +6,7 @@
 /*   By: dpolosuk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/09 13:40:35 by dpolosuk          #+#    #+#             */
-/*   Updated: 2017/12/30 17:46:00 by dpolosuk         ###   ########.fr       */
+/*   Updated: 2017/12/30 19:22:09 by dpolosuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,9 +139,10 @@ char				*ft_pf_res_x_raw(t_format *a, va_list ap);
 ** >>x and X types flags dealing
 */
 
-char				*ft_pf_res_x_flags(char *s, t_format *all);
+char				*ft_pf_res_x_flags(char *s, t_format *all, int zero);
 char				*ft_pf_res_x_flags_zero(char *s, t_format *all);
 char				*ft_pf_res_x_flags_hash(char *s, t_format *all);
+char				*ft_pf_res_x_flags_minus(char *s);
 
 /*
 ** >p type dealing

@@ -6,7 +6,7 @@
 /*   By: dpolosuk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/26 11:15:03 by dpolosuk          #+#    #+#             */
-/*   Updated: 2017/12/27 09:54:35 by dpolosuk         ###   ########.fr       */
+/*   Updated: 2017/12/30 19:22:25 by dpolosuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void		ft_pf_hex_to_upper(char **res)
 	}
 }
 
-char			*ft_pf_res_x_flags(char *s, t_format *all)
+char			*ft_pf_res_x_flags(char *s, t_format *all, int zero)
 {
 	char	*res;
 
@@ -44,10 +44,10 @@ char			*ft_pf_res_x_flags(char *s, t_format *all)
 		return (s);
 	if ((*all).flag_zero)
 		res = ft_pf_res_x_flags_zero(res, all);
-	if ((*all).flag_hash)
+	if ((*all).flag_hash && !zero)
 		res = ft_pf_res_x_flags_hash(res, all);
-	if ((*all).flag_minus)
-		res = ft_pf_res_d_i_flags_minus(res, all);
+	if ((*all).flag_minus && (*all).width_field > (*all).len_of_raw_s)
+		res = ft_pf_res_x_flags_minus(res);
 	if ((*all).big_x)
 		ft_pf_hex_to_upper(&res);
 	return (res);

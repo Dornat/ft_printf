@@ -6,7 +6,7 @@
 /*   By: dpolosuk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/22 17:15:41 by dpolosuk          #+#    #+#             */
-/*   Updated: 2017/12/28 15:03:47 by dpolosuk         ###   ########.fr       */
+/*   Updated: 2017/12/30 18:11:25 by dpolosuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,10 @@ static void		ft_pf_parse_precision_if(const char **format, t_format *all, \
 				va_list ap)
 {
 	(*all).precision_field = va_arg(ap, int);
+	if ((*all).precision_field < 0)
+		(*all).precision_field_identifier = 0;
+	else
+		(*all).precision_field_identifier = 1;
 	*format = *format + 1;
 }
 

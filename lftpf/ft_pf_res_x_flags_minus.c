@@ -1,24 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pf_res_s_precision.c                            :+:      :+:    :+:   */
+/*   ft_pf_res_x_flags_minus.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpolosuk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/30 12:46:31 by dpolosuk          #+#    #+#             */
-/*   Updated: 2017/12/30 18:13:00 by dpolosuk         ###   ########.fr       */
+/*   Created: 2017/12/30 19:07:56 by dpolosuk          #+#    #+#             */
+/*   Updated: 2017/12/30 19:35:16 by dpolosuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_printf.h>
 
-char	*ft_pf_res_s_precision(char *s, t_format *all)
+char	*ft_pf_res_x_flags_minus(char *s)
 {
-	char	*res;
+	int		len_raw;
+	int		index_last;
+	int		index_first;
 
-	res = ft_strnew((*all).precision_field);
-	res = ft_strncpy(res, s, (*all).precision_field);
-	(*all).len_of_raw_s = ft_strlen(res);
-	ft_strdel(&s);
-	return (res);
+	index_last = ft_strlen(s);
+	index_first = ft_pf_find_hex_index(s);
+	if (index_first == -1)
+		return (s);
+	len_raw = index_last - index_first;
+	s = ft_memmove(s, s + index_first, len_raw);
+	while (s[len_raw])
+		s[len_raw++] = ' ';
+	return (s);
 }

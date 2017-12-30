@@ -6,7 +6,7 @@
 #    By: dpolosuk <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/09 13:27:26 by dpolosuk          #+#    #+#              #
-#    Updated: 2017/12/30 17:46:25 by dpolosuk         ###   ########.fr        #
+#    Updated: 2017/12/30 19:09:04 by dpolosuk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -144,6 +144,7 @@ SRC =	ft_count_bits.c \
 		ft_pf_res_unicode.c \
 		ft_pf_res_x_flags.c \
 		ft_pf_res_x_flags_hash.c \
+		ft_pf_res_x_flags_minus.c \
 		ft_pf_res_x_flags_zero.c \
 		ft_pf_set_zeroes_tp_struct_fields.c \
 		ft_pf_string.c \
