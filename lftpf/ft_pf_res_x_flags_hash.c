@@ -6,12 +6,15 @@
 /*   By: dpolosuk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/26 12:15:20 by dpolosuk          #+#    #+#             */
-/*   Updated: 2017/12/26 20:22:08 by dpolosuk         ###   ########.fr       */
+/*   Updated: 2018/01/01 12:40:04 by dpolosuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_printf.h>
 
+#define LORS (*all).len_of_raw_s
+#define WF (*all).width_field
+#define PF (*all).precision_field
 #define PFI (*all).precision_field_identifier
 
 static void		ft_pf_res_x_flags_hash_elif1(char *s, char **res, t_format *all)
@@ -32,19 +35,30 @@ static void		ft_pf_res_x_flags_hash_elif1(char *s, char **res, t_format *all)
 	ft_strdel(&s);
 }
 
+static void		ft_pf_res_x_flags_hash_elif2_elif(char **res, t_format *all, \
+				int *i, int len_s)
+{
+	*res = ((((*all).width_field - (*all).precision_field) == 2) && \
+			(((*all).width_field - (*all).len_of_raw_s) \
+			>= 2)) ? (ft_strnew(len_s)) : (ft_strnew(len_s + 1));
+	*i = ((((*all).width_field - (*all).precision_field) == 2) && \
+			(((*all).width_field - (*all).len_of_raw_s) \
+			>= 2)) ? (len_s - 1) : (len_s);
+}
+
 static void		ft_pf_res_x_flags_hash_elif2(char *s, char **res, \
 				t_format *all, int len_s)
 {
 	int		i;
 	int		j;
 
-	if ((*all).width_field > (*all).precision_field)
+	if ((LORS == len_s) || (LORS > WF && LORS > PF))
 	{
-		*res = (((*all).width_field - (*all).precision_field) \
-				== 2) ? (ft_strnew(len_s)) : (ft_strnew(len_s + 1));
-		i = (((*all).width_field - (*all).precision_field) \
-				== 2) ? (len_s - 1) : (len_s);
+		*res = ft_strnew(len_s + 2);
+		i = len_s + 1;
 	}
+	else if ((*all).width_field > (*all).precision_field)
+		ft_pf_res_x_flags_hash_elif2_elif(res, all, &i, len_s);
 	else
 	{
 		*res = ft_strnew(len_s + 2);

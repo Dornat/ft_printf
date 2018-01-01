@@ -6,7 +6,7 @@
 /*   By: dpolosuk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/25 18:49:18 by dpolosuk          #+#    #+#             */
-/*   Updated: 2017/12/29 19:24:22 by dpolosuk         ###   ########.fr       */
+/*   Updated: 2018/01/01 12:52:54 by dpolosuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,6 @@ char	*ft_pf_res_o_flags(char *s, t_format *all)
 	if ((*all).flag_hash)
 		res = ft_pf_res_o_flags_hash(res, all);
 	if ((*all).flag_minus)
-		res = ft_pf_res_d_i_flags_minus(res, all);
+		res = ft_pf_res_o_flags_minus(res);
 	return (res);
 }

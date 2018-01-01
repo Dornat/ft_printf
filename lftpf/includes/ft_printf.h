@@ -6,7 +6,7 @@
 /*   By: dpolosuk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/09 13:40:35 by dpolosuk          #+#    #+#             */
-/*   Updated: 2017/12/30 19:22:09 by dpolosuk         ###   ########.fr       */
+/*   Updated: 2018/01/01 13:09:40 by dpolosuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,7 @@ unsigned long long	ft_pf_long_long_u(t_format *all, va_list ap);
 */
 
 char				*ft_pf_res_u_flags(char *s, t_format *all);
+char				*ft_pf_res_u_flags_minus(char *s);
 
 /*
 ** >o and O types dealing
@@ -128,6 +129,7 @@ char				*ft_pf_res_o_raw(t_format *all, va_list ap);
 
 char				*ft_pf_res_o_flags(char *s, t_format *all);
 char				*ft_pf_res_o_flags_hash(char *s, t_format *all);
+char				*ft_pf_res_o_flags_minus(char *s);
 
 /*
 ** >x and X types dealing
