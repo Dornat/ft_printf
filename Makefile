@@ -6,7 +6,7 @@
 #    By: dpolosuk <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/09 13:27:26 by dpolosuk          #+#    #+#              #
-#    Updated: 2018/01/01 13:10:08 by dpolosuk         ###   ########.fr        #
+#    Updated: 2018/01/01 15:43:21 by dpolosuk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -87,6 +87,7 @@ SRC =	ft_count_bits.c \
 		ft_pf_check_functions.c \
 		ft_pf_deal_with_c.c \
 		ft_pf_deal_with_d_i.c \
+		ft_pf_deal_with_n.c \
 		ft_pf_deal_with_o.c \
 		ft_pf_deal_with_o_raw.c \
 		ft_pf_deal_with_p.c \
@@ -102,6 +103,7 @@ SRC =	ft_count_bits.c \
 		ft_pf_dec_to_oct_functions.c \
 		ft_pf_find_functions.c \
 		ft_pf_functions_for_res_d_i.c \
+		ft_pf_functions_for_res_n.c \
 		ft_pf_functions_for_res_p.c \
 		ft_pf_functions_for_res_u.c \
 		ft_pf_itoa_long_long.c \
@@ -112,6 +114,7 @@ SRC =	ft_count_bits.c \
 		ft_pf_parse_precision.c \
 		ft_pf_parse_size.c \
 		ft_pf_parse_width.c \
+		ft_pf_put_everything_together.c \
 		ft_pf_res_c_flags.c \
 		ft_pf_res_c_flags_minus.c \
 		ft_pf_res_c_flags_zero.c \

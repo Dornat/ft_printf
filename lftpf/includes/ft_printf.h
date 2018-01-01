@@ -6,7 +6,7 @@
 /*   By: dpolosuk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/09 13:40:35 by dpolosuk          #+#    #+#             */
-/*   Updated: 2018/01/01 13:09:40 by dpolosuk         ###   ########.fr       */
+/*   Updated: 2018/01/01 14:33:17 by dpolosuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ void				ft_pf_deal_with_p(t_format *all, va_list ap, \
 void				ft_pf_deal_with_c(t_format *all, va_list ap, \
 					unsigned int *len);
 void				ft_pf_deal_with_s(t_format *all, va_list ap, \
+					unsigned int *len);
+void				ft_pf_deal_with_n(t_format *all, va_list ap, \
 					unsigned int *len);
 
 /*
@@ -195,6 +197,14 @@ char				*ft_pf_res_s_width(char *s, t_format *all);
 char				*ft_pf_res_s_flags(char *s, t_format *all);
 char				*ft_pf_res_s_flags_minus(char *s, t_format *all);
 char				*ft_pf_res_s_flags_zero(char *s, t_format *all);
+
+/*
+** >>n type flags dealing
+*/
+
+int					*ft_pf_normal_n(t_format *all, va_list ap);
+short				*ft_pf_short_n(t_format *all, va_list ap);
+long				*ft_pf_long_n(t_format *all, va_list ap);
 
 /*
 ** >shitty type dealing
