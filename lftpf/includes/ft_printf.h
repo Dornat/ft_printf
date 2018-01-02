@@ -6,7 +6,7 @@
 /*   By: dpolosuk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/09 13:40:35 by dpolosuk          #+#    #+#             */
-/*   Updated: 2018/01/01 14:33:17 by dpolosuk         ###   ########.fr       */
+/*   Updated: 2018/01/02 11:33:58 by dpolosuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,8 @@ void				ft_pf_deal_with_c(t_format *all, va_list ap, \
 void				ft_pf_deal_with_s(t_format *all, va_list ap, \
 					unsigned int *len);
 void				ft_pf_deal_with_n(t_format *all, va_list ap, \
+					unsigned int *len);
+void				ft_pf_deal_with_b(t_format *all, va_list ap, \
 					unsigned int *len);
 
 /*
@@ -207,6 +209,19 @@ short				*ft_pf_short_n(t_format *all, va_list ap);
 long				*ft_pf_long_n(t_format *all, va_list ap);
 
 /*
+** >>b type dealing
+*/
+
+char				*ft_pf_res_b_raw(t_format *all, va_list ap);
+
+/*
+** >>b type flags dealing
+*/
+
+char				*ft_pf_res_b_flags(char *s, t_format *all);
+char				*ft_pf_res_b_flags_space(char *s, t_format *all);
+
+/*
 ** >shitty type dealing
 */
 
@@ -248,5 +263,6 @@ char				*ft_pf_dec_to_oct_ull(unsigned long long dec);
 char				*ft_pf_dec_to_hex(unsigned long long int input);
 int					ft_count_bits(unsigned long long dec);
 int					ft_pf_everything_failed(char c);
+char				*ft_pf_itob(unsigned long long int octet);
 
 #endif

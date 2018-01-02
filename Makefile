@@ -6,7 +6,7 @@
 #    By: dpolosuk <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/09 13:27:26 by dpolosuk          #+#    #+#              #
-#    Updated: 2018/01/01 15:43:21 by dpolosuk         ###   ########.fr        #
+#    Updated: 2018/01/02 11:33:33 by dpolosuk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -85,6 +85,7 @@ SRC_LIB =	ft_atoi.c \
 
 SRC =	ft_count_bits.c \
 		ft_pf_check_functions.c \
+		ft_pf_deal_with_b.c \
 		ft_pf_deal_with_c.c \
 		ft_pf_deal_with_d_i.c \
 		ft_pf_deal_with_n.c \
@@ -109,12 +110,16 @@ SRC =	ft_count_bits.c \
 		ft_pf_itoa_long_long.c \
 		ft_pf_itoa_unsigned_int.c \
 		ft_pf_itoa_unsigned_long_long.c \
+		ft_pf_itob.c \
 		ft_pf_parse_flags.c \
 		ft_pf_parse_parameter.c \
 		ft_pf_parse_precision.c \
 		ft_pf_parse_size.c \
 		ft_pf_parse_width.c \
 		ft_pf_put_everything_together.c \
+		ft_pf_res_b_flags.c \
+		ft_pf_res_b_flags_space.c \
+		ft_pf_res_b_raw.c \
 		ft_pf_res_c_flags.c \
 		ft_pf_res_c_flags_minus.c \
 		ft_pf_res_c_flags_zero.c \

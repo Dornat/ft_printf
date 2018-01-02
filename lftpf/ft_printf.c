@@ -6,7 +6,7 @@
 /*   By: dpolosuk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/09 13:42:09 by dpolosuk          #+#    #+#             */
-/*   Updated: 2018/01/01 15:42:23 by dpolosuk         ###   ########.fr       */
+/*   Updated: 2018/01/01 20:32:19 by dpolosuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,9 @@ void	ft_pf_the_center(const char **format, t_format *all, va_list ap, \
 
 int		ft_printf(const char *format, ...)
 {
-	va_list					ap;
-	t_format				all;
-	unsigned int			len;
+	va_list			ap;
+	t_format		all;
+	unsigned int	len;
 
 	len = 0;
 	va_start(ap, format);

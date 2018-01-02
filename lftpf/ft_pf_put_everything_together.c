@@ -6,7 +6,7 @@
 /*   By: dpolosuk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/01 15:41:49 by dpolosuk          #+#    #+#             */
-/*   Updated: 2018/01/01 15:44:26 by dpolosuk         ###   ########.fr       */
+/*   Updated: 2018/01/02 11:22:58 by dpolosuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ void			ft_pf_put_everything_together(const char **format, \
 		t_format *all, va_list ap, unsigned int *len)
 {
 	ft_pf_pet_extention(format, all, ap, len);
+	if (**format == 'b')
+		ft_pf_deal_with_b(all, ap, len);
 	if (**format)
 		*format = *format + 1;
 }
