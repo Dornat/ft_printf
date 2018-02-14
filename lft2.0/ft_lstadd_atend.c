@@ -1,35 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_lstadd_atend.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpolosuk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/05 16:41:35 by dpolosuk          #+#    #+#             */
-/*   Updated: 2018/02/04 16:55:10 by dpolosuk         ###   ########.fr       */
+/*   Created: 2018/01/28 13:02:31 by dpolosuk          #+#    #+#             */
+/*   Updated: 2018/01/28 13:08:33 by dpolosuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-t_list	*ft_lstnew(void const *content, size_t content_size)
+void	ft_lstadd_atend(t_list **alst, t_list *new)
 {
-	t_list	*res;
+	t_list		*ptr;
 
-	res = (t_list*)malloc(sizeof(t_list));
-	if (res == NULL)
-		return (NULL);
-	if (content == NULL)
-	{
-		res->content = NULL;
-		res->content_size = 0;
-	}
-	else
-	{
-		res->content = (void*)ft_strnew(content_size);
-		ft_memcpy(res->content, content, content_size);
-		res->content_size = content_size;
-	}
-	res->next = NULL;
-	return (res);
+	if (!alst || !new)
+		return ;
+	ptr = *alst;
+	while (ptr->next)
+		ptr = ptr->next;
+	ptr->next = new;
 }

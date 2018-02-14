@@ -6,7 +6,7 @@
 #    By: dpolosuk <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/10/25 12:32:10 by dpolosuk          #+#    #+#              #
-#    Updated: 2017/12/11 18:45:36 by dpolosuk         ###   ########.fr        #
+#    Updated: 2018/01/28 13:31:49 by dpolosuk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,9 @@ SRC =	ft_atoi.c \
 		ft_isdigit.c \
 		ft_isprint.c \
 		ft_itoa.c \
+		ft_itoa_base.c \
 		ft_lstadd.c \
+		ft_lstadd_atend.c \
 		ft_lstdel.c \
 		ft_lstdelfunc.c \
 		ft_lstdelone.c \

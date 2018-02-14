@@ -6,7 +6,7 @@
 /*   By: dpolosuk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/05 15:25:04 by dpolosuk          #+#    #+#             */
-/*   Updated: 2017/12/09 12:25:46 by dpolosuk         ###   ########.fr       */
+/*   Updated: 2018/01/02 18:26:36 by dpolosuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,5 @@ void	ft_putstr(char const *s)
 {
 	if (!s)
 		return ;
-	while (*s)
-		write(1, s++, 1);
+	write(1, s, ft_strlen(s));
 }
